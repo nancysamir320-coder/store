@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تواصل معنا | GloUp</title>
+<style>
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #f9d342;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #555;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+h2 {
+    color: #f9d342;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    background-color: #f9d342;
+    color: #333;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+form button:hover {
+    background-color: #f1c232;
+}
+
+footer {
+    background-color: #f9d342;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>GloUp</h1>
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="products.html">منتجاتنا</a>
+        <a href="help.html">المساعدة</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>تواصل معنا</h2>
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="الاسم الكامل" required>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <input type="tel" name="phone" placeholder="رقم التليفون" required pattern="[0-9]{10,15}">
+        <textarea name="message" rows="6" placeholder="اكتب رسالتك هنا..." required></textarea>
+        <button type="submit">إرسال الرسالة</button>
+    </form>
+</div>
+
+<footer>
+    © 2025 GloUp - كل الحقوق محفوظة
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>مجموعه ايفا | GloUp</title>
+<style>
+body { font-family:"Tajawal",Arial,sans-serif;background:#f5f6fa;margin:0;padding:20px;direction:rtl;}
+.container{max-width:900px;margin:30px auto;background:#fff;padding:22px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+.product-row{display:flex;gap:24px;flex-wrap:wrap;align-items:center;}
+.left{flex:1 1 320px;text-align:center;}
+.product-img{width:100%;max-width:320px;border-radius:10px;}
+.right{flex:1 1 420px;}
+h1{margin:0 0 8px;color:#222;}
+p{color:#444;line-height:1.6;}
+.price{font-size:22px;color:#e53935;font-weight:700;margin:12px 0;}
+.price-small{font-size:14px;color:#666;margin-top:6px;}
+.quantity-box{display:flex;align-items:center;gap:8px;margin:12px 0;}
+input[type="number"]{width:90px;padding:8px;font-size:16px;text-align:center;border-radius:8px;border:1px solid #ddd;}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;border:none;cursor:pointer;font-size:16px;}
+.buy{background:#ff5722;color:#fff;margin-left:8px;}
+.secondary{background:#9e9e9e;color:#fff;}
+.option-group{margin:10px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+label.radio{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;border:1px solid #eee;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="product-row">
+<div class="left">
+<img src="./eva2.webp" alt="مجموعه ايفا" class="product-img">
+<div class="price-small">الحجم الافتراضي: مجموعة كاملة · بلد المنشأ: مصر</div>
+</div>
+<div class="right">
+<h1>مجموعه ايفا</h1>
+<p><strong>الوصف:</strong> مجموعة متكاملة للعناية بالجسم والبشرة لتنعيم وترطيب فعال.</p>
+<div class="small"><strong>اختر الحجم:</strong></div>
+<div class="option-group" id="sizeOptions">
+<label class="radio"><input type="radio" name="size" value="full" checked> مجموعة كاملة</label>
+</div>
+<div class="quantity-box">
+<label for="quantity">الكمية:</label>
+<input id="quantity" type="number" min="1" value="1">
+<div class="small">السعر لكل وحدة: <span id="unitPrice">250</span> جنيه</div>
+</div>
+<div class="price" id="totalPrice">السعر الإجمالي: 250 جنيه</div>
+<div class="price-small" id="discountLine" style="display:none;">السعر بعد الخصم لكل وحدة: <span id="unitAfter">0</span> جنيه</div>
+<div class="coupon">
+<input id="couponInput" type="text" placeholder="أدخلي كوبون الخصم إن وُجد (مثلاً ALO20)">
+<button id="applyCoupon" class="btn secondary">تطبيق الكوبون</button>
+<button id="removeCoupon" class="btn secondary" style="display:none;">إزالة الكوبون</button>
+</div>
+<div id="couponMsg" class="small" style="margin-top:8px;"></div>
+<div style="margin-top:18px;">
+<button id="buyBtn" class="btn buy">⚡ شراء</button>
+</div>
+<div id="actionMsg" class="msg" role="status" aria-live="polite"></div>
+</div></div></div>
+<script>
+const PRODUCT={name:"مجموعه ايفا",short:"مجموعة متكاملة للعناية بالجسم والبشرة.",image:"./eva2.webp",prices:{"full":250}};
+const COUPONS={"ALO20":20,"ALO10":10};
+const qtyInput=document.getElementById("quantity");
+const unitPriceEl=document.getElementById("unitPrice");
+const totalPriceEl=document.getElementById("totalPrice");
+const unitAfterEl=document.getElementById("unitAfter");
+const discountLine=document.getElementById("discountLine");
+const applyCouponBtn=document.getElementById("applyCoupon");
+const removeCouponBtn=document.getElementById("removeCoupon");
+const couponInput=document.getElementById("couponInput");
+const couponMsg=document.getElementById("couponMsg");
+const buyBtn=document.getElementById("buyBtn");
+let appliedCoupon=null;
+function getSelectedSize(){const r=document.querySelector('input[name="size"]:checked');return r?r.value:"full";}
+function getBaseUnitPrice(){return PRODUCT.prices[getSelectedSize()]||PRODUCT.prices["full"];}
+function getCouponPercent(){return appliedCoupon?appliedCoupon.percent:0;}
+function calculatePrices(){let qty=parseInt(qtyInput.value,10);if(isNaN(qty)||qty<1){qty=1;qtyInput.value=1;}const baseUnit=Number(getBaseUnitPrice());const pct=getCouponPercent();const unitAfter=+(baseUnit*(1-pct/100)).toFixed(2);const total=+(unitAfter*qty).toFixed(2);return{qty,baseUnit,unitAfter,total,pct};}
+function renderPrices(){const{qty,baseUnit,unitAfter,total,pct}=calculatePrices();unitPriceEl.textContent=baseUnit;if(pct>0){discountLine.style.display="block";unitAfterEl.textContent=unitAfter;totalPriceEl.textContent=`السعر الإجمالي: ${total} جنيه (بعد خصم ${pct}%)`;}else{discountLine.style.display="none";totalPriceEl.textContent=`السعر الإجمالي: ${total} جنيه`;}}
+applyCouponBtn.addEventListener("click",()=>{const code=(couponInput.value||"").trim().toUpperCase();if(COUPONS[code]){appliedCoupon={code,percent:COUPONS[code]};couponMsg.textContent=`تم تطبيق الكوبون ${code} — خصم ${appliedCoupon.percent}%.`;couponMsg.className="small";applyCouponBtn.style.display="none";removeCouponBtn.style.display="inline-block";renderPrices();}else{couponMsg.textContent="الكوبون غير صالح أو منتهي.";couponMsg.className="small error";}});
+removeCouponBtn.addEventListener("click",()=>{appliedCoupon=null;couponInput.value="";couponMsg.textContent="تم إزالة الكوبون.";couponMsg.className="small";applyCouponBtn.style.display="inline-block";removeCouponBtn.style.display="none";renderPrices();});
+buyBtn.addEventListener("click",()=>{const{qty,baseUnit,unitAfter,total,pct}=calculatePrices();const order={name:PRODUCT.name,short:PRODUCT.short,image:PRODUCT.image,size:getSelectedSize(),unitPrice:baseUnit,unitAfter,discountPct:pct,quantity:qty,total,createdAt:new Date().toISOString()};sessionStorage.setItem("pendingOrder",JSON.stringify(order));window.location.href="signup.html";});
+document.querySelectorAll('input[name="size"]').forEach(r=>r.addEventListener("change",renderPrices));qtyInput.addEventListener("input",renderPrices);renderPrices();
+</script>
+</body>
+</html>

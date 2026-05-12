@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إنشاء حساب | GloUp</title>
+<style>
+body { font-family:"Tajawal",Arial,sans-serif; background:#f5f6fa; margin:0; padding:0; }
+.container { max-width:500px; margin:60px auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+h1 { text-align:center; color:#222; margin-bottom:20px; }
+form { display:flex; flex-direction:column; gap:15px; }
+input { padding:12px; font-size:16px; border-radius:8px; border:1px solid #ddd; }
+button { padding:12px; font-size:16px; border:none; border-radius:8px; background:#ff5722; color:#fff; cursor:pointer; transition:0.3s; }
+button:hover { background:#e64a19; }
+p { text-align:center; font-size:14px; color:#666; margin-top:10px; }
+a { color:#ff5722; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>إنشاء حساب جديد</h1>
+<form id="signupForm">
+<input type="text" name="fullname" placeholder="الاسم الكامل" required>
+<input type="email" name="email" placeholder="البريد الإلكتروني" required>
+<input type="password" name="password" placeholder="كلمة المرور" required>
+<input type="password" name="confirm" placeholder="تأكيد كلمة المرور" required>
+<button type="submit">إنشاء الحساب</button>
+</form>
+<p>هل لديك حساب؟ <a href="login.html">تسجيل الدخول</a></p>
+</div>
+
+<script>
+const signupForm = document.getElementById("signupForm");
+signupForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    
+    // هنا ممكن تحطي أي تحقق أو حفظ بيانات مؤقت (مثلاً sessionStorage)
+    const userData = {
+        fullname: signupForm.fullname.value,
+        email: signupForm.email.value,
+        password: signupForm.password.value
+    };
+    sessionStorage.setItem("user", JSON.stringify(userData));
+
+    // تحويل مباشرة لصفحة تسجيل الدخول
+    window.location.href = "login.html";
+});
+</script>
+</body>
+</html>

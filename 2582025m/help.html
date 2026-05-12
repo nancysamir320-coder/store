@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المساعدة | GloUp</title>
+<style>
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+header {
+    background-color: #f9d342;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #555;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+h2 {
+    color: #f9d342;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.accordion {
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    padding: 15px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: right;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+.accordion:hover {
+    background-color: #f1e07a;
+}
+
+.accordion.active {
+    background-color: #f1c232;
+    color: #fff;
+}
+
+.panel {
+    padding: 0 20px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    border-left: 3px solid #f9d342;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #f9d342;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>GloUp</h1>
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="products.html">منتجاتنا</a>
+        <a href="help.html">المساعدة</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>الأسئلة الشائعة - المساعدة</h2>
+
+    <button class="accordion">1. ما هي منتجات GloUp؟</button>
+    <div class="panel">
+        <p>منتجات GloUp هي مجموعة مختارة بعناية من مستحضرات العناية بالبشرة لتناسب جميع أنواع البشرة.</p>
+    </div>
+
+    <button class="accordion">2. كيف أختار المنتج المناسب لبشرتي؟</button>
+    <div class="panel">
+        <p>يمكنك متابعة نصائح العناية بالبشرة الموجودة في الموقع ومراجعة وصف كل منتج لمعرفة الأنسب لنوع بشرتك.</p>
+    </div>
+
+    <button class="accordion">3. كيف يمكنني شراء منتج؟</button>
+    <div class="panel">
+        <p>اختر المنتج المطلوب، اضغط على زر شراء، وأنشئ حسابك ثم اتبع خطوات مراجعة الشراء لتأكيد الطلب.</p>
+    </div>
+
+    <button class="accordion">4. هل يمكنني إلغاء الطلب بعد الشراء؟</button>
+    <div class="panel">
+        <p>يمكنك التواصل معنا عبر صفحة التواصل لإلغاء الطلب قبل الشحن.</p>
+    </div>
+
+    <button class="accordion">5. ما طرق الدفع المتاحة؟</button>
+    <div class="panel">
+        <p>نقبل الدفع الإلكتروني عبر البطاقة البنكية أو الدفع عند الاستلام حسب الموقع.</p>
+    </div>
+
+    <button class="accordion">6. كم يستغرق وصول المنتج؟</button>
+    <div class="panel">
+        <p>مدة التوصيل عادة بين 2-5 أيام عمل حسب موقعك الجغرافي.</p>
+    </div>
+
+    <button class="accordion">7. هل منتجاتكم طبيعية؟</button>
+    <div class="panel">
+        <p>جميع منتجاتنا تحتوي على مكونات طبيعية وآمنة على البشرة.</p>
+    </div>
+
+    <button class="accordion">8. هل يمكنني استرجاع المنتج؟</button>
+    <div class="panel">
+        <p>نعم، يمكن استرجاع المنتج في حال لم يتم فتحه خلال 7 أيام من الاستلام.</p>
+    </div>
+
+    <button class="accordion">9. هل لديكم دعم فني؟</button>
+    <div class="panel">
+        <p>يمكنك التواصل معنا عبر نموذج التواصل أو البريد الإلكتروني لأي استفسارات.</p>
+    </div>
+
+    <button class="accordion">10. هل توجد خصومات أو كوبونات؟</button>
+    <div class="panel">
+        <p>نعم، يمكنك متابعة قسم العروض والكوبونات في موقعنا للحصول على خصومات مميزة.</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 GloUp - كل الحقوق محفوظة
+</footer>
+
+<script>
+// الكود الخاص بالـ accordion
+const acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if(panel.style.display === "block"){
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

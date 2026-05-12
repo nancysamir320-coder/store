@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مراجعة الشراء | GloUp</title>
+<style>
+body { font-family:"Tajawal",Arial,sans-serif; background:#f5f6fa; margin:0; padding:20px; }
+.container { max-width:700px; margin:50px auto; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+h1 { text-align:center; color:#222; margin-bottom:25px; }
+.product-review { display:flex; gap:20px; align-items:center; flex-wrap:wrap; border-bottom:1px solid #eee; padding-bottom:20px; margin-bottom:20px; }
+.product-review img { width:150px; border-radius:10px; }
+.details { flex:1; }
+.details h2 { margin:0 0 8px; color:#ff5722; }
+.details p { margin:5px 0; color:#444; }
+.quantity { font-weight:700; margin-top:8px; }
+button { padding:12px 20px; font-size:16px; border:none; border-radius:8px; background:#4caf50; color:#fff; cursor:pointer; transition:0.3s; }
+button:hover { background:#388e3c; }
+.note { font-size:14px; color:#666; margin-top:15px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>مراجعة الشراء</h1>
+<div id="reviewContainer">
+  <!-- تفاصيل المنتج سيتم إضافتها هنا عبر JavaScript -->
+</div>
+<div style="text-align:center; margin-top:20px;">
+  <button id="confirmBtn">تأكيد الشراء</button>
+</div>
+<div class="note">ملاحظة: بعد الضغط على "تأكيد الشراء" سيتم تحويلك للخطوة التالية.</div>
+</div>
+
+<script>
+// جلب بيانات الطلب المؤقت من sessionStorage
+const order = JSON.parse(sessionStorage.getItem("pendingOrder") || "{}");
+const container = document.getElementById("reviewContainer");
+
+if(!order.name){
+    container.innerHTML = "<p style='color:#c62828; text-align:center;'>لا يوجد منتج لمراجعته. يرجى اختيار منتج أولاً.</p>";
+} else {
+    container.innerHTML = `
+    <div class="product-review">
+        <img src="${order.image}" alt="${order.name}">
+        <div class="details">
+            <h2>${order.name}</h2>
+            <p>${order.short}</p>
+            <p class="quantity">الكمية: ${order.quantity}</p>
+            <p>الحجم: ${order.size} مل</p>
+            <p>سعر الوحدة بعد الخصم: ${order.unitAfter} جنيه</p>
+            <p>الإجمالي: ${order.total} جنيه</p>
+        </div>
+    </div>
+    `;
+}
+
+// زر التأكيد: تحويل مباشر لصفحة الشكر
+document.getElementById("confirmBtn").addEventListener("click", () => {
+    window.location.href = "thankyou.html";
+});
+</script>
+</body>
+</html>
